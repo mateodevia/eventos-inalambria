@@ -5,7 +5,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
 
-const eventsRouter = require('./routes/index');
+const eventosRouter = require('./routes/eventos');
+const usuariosRouter = require('./routes/usuarios');
+const reservasRouter = require('./routes/reservas');
 
 const app = express();
 
@@ -15,7 +17,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'frontend/build')));
 
-app.use('/api/events', eventsRouter);
+app.use('/api/eventos', eventosRouter);
+app.use('/api/reservas', reservasRouter);
+app.use('/api/usuarios', usuariosRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

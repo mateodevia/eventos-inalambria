@@ -1,0 +1,117 @@
+.navBarContainer {
+    height: 60px;
+    width: 100vw;
+    background-color: white;
+}
+
+.navBarContainer h1 {
+    font-size: 20px;
+    margin-left: 20px;
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+.navTitlesContainer {
+    margin: 0 20px 0 auto;
+}
+
+.mobileNavTitlesContainer {
+    display: none;
+}
+
+.navTitlesContainer h2 {
+    font-size: 16px;
+    margin: auto 0;
+    color: var(--secondary);
+    cursor: pointer;
+}
+.navTitlesContainer h2:hover {
+    color: var(--contrast);
+}
+
+.session {
+    font-size: 16px;
+    margin: auto 10px;
+    font-weight: lighter;
+    color: var(--contrast);
+    cursor: pointer;
+}
+
+.session:hover {
+    color: var(--secondary);
+}
+
+.mobileSession {
+    display: none;
+}
+
+.navBarContainer button {
+    display: none;
+}
+
+@media screen and (max-width: 450px) {
+    .navBarContainer {
+        display: block;
+        height: fit-content;
+        min-height: 60px;
+    }
+
+    .navBarContainer h1 {
+        font-size: 20px;
+        padding: 15px;
+        margin: 0;
+        color: var(--secondary);
+    }
+
+    .navTitlesContainer {
+        display: none;
+    }
+
+    .session {
+        display: none;
+    }
+
+    .mobileNavTitlesContainer {
+        display: blocK;
+        margin: 10px auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    .mobileNavTitlesContainer h2 {
+        margin: 0;
+        font-size: 16px;
+        color: var(--secondary);
+        cursor: pointer;
+    }
+
+    .mobileNavTitlesContainer h2:hover {
+        color: var(--contrast);
+    }
+
+    .mobileSession {
+        display: block;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 16px;
+        margin: auto 10px;
+        font-weight: lighter;
+        color: var(--contrast);
+        cursor: pointer;
+    }
+
+    .mobileSession:hover {
+        color: var(--secondary);
+    }
+
+    .navBarContainer button {
+        display: block;
+        float: right;
+        font-size: 24px;
+        height: 60px;
+        padding: 0 20px;
+        border: none;
+        background-color: transparent;
+        color: var(--contrast);
+    }
+}

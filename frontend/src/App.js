@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <Switch>
+                <Route
+                    path='/login'
+                    render={() => {
+                        return <div>Login</div>;
+                    }}
+                />
+                <Route
+                    exact
+                    path='/'
+                    render={() => {
+                        return (
+                            <React.Fragment>
+                                <NavBar selected={'Home'} />
+                                <div>Home</div>
+                            </React.Fragment>
+                        );
+                    }}
+                />
+                <Route
+                    exact
+                    path='/reservas'
+                    render={() => {
+                        return (
+                            <React.Fragment>
+                                <NavBar selected={'Reservas'} />
+                                <div>Mis Reservas</div>
+                            </React.Fragment>
+                        );
+                    }}
+                />
+            </Switch>
+        </div>
+    );
 }
 
-export default App;
+export default withRouter(App);

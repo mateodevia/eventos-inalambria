@@ -1,4 +1,5 @@
 const { Pool, Client } = require('pg');
+require('dotenv').config();
 
 const PostgresUtils = async () => {
     const config = {
@@ -7,13 +8,16 @@ const PostgresUtils = async () => {
             rejectUnauthorized: false,
         },
     };
+
     const pool = new Pool(config);
 
     const res = await pool.query('SELECT * FROM public."Eventos"');
 
-    let exports = {};
-
-    return exports;
+    console.log(res);
 };
 
-module.exports = PostgresUtils;
+try {
+    PostgresUtils();
+} catch (err) {
+    console.log('error: ', err);
+}

@@ -105,9 +105,12 @@ const PostgresUtils = () => {
                 `INSERT INTO public."RESERVAS"(
                     "ID_EVENTO", "ID_USUARIO", "CANTIDAD")
                 SELECT ${evento}, ${usuario}, ${cantidad}
-                WHERE (SELECT sum("CANTIDAD")
+                WHERE ((SELECT sum("CANTIDAD")
                     FROM "RESERVAS"
-                    WHERE "ID_EVENTO" = ${evento}) + ${cantidad} <= (SELECT "CUPOS" FROM "EVENTOS" WHERE "ID" = ${evento});`
+                    WHERE "ID_EVENTO" = ${evento}) + ${cantidad} <= (SELECT "CUPOS" FROM "EVENTOS" WHERE "ID" = ${evento}))
+                    OR (((SELECT count(*)
+                    FROM "RESERVAS"
+                    WHERE "ID_EVENTO" = ${evento})) = 0 AND (SELECT "CUPOS" FROM "EVENTOS" WHERE "ID" = ${evento}) >= ${cantidad})`
             );
 
             if (res.rowCount == 0) {

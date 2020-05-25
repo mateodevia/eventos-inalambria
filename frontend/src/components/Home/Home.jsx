@@ -47,9 +47,12 @@ function Home(props) {
         }
     };
 
-    let handleCreateReservaClose = () => {
+    let handleCreateReservaClose = (newReserva) => {
         document.body.style.overflow = '';
         setCreateReserva(false);
+        if (newReserva) {
+            props.history.push('/reservas');
+        }
     };
 
     return (

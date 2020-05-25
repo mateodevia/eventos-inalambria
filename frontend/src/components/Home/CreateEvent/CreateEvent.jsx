@@ -71,7 +71,10 @@ const CreateEvent = (props) => {
         return (
             <div className='containerCreateEvent'>
                 <div className='cardCreateEvent'>
-                    <div className='closeButton' onClick={props.close}>
+                    <div
+                        className='closeButton'
+                        onClick={() => props.close(false)}
+                    >
                         <img src={closeIcon} alt='closeIcon' />
                     </div>
                     <h1>Crear Evento</h1>

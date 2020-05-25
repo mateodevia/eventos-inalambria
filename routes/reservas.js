@@ -12,7 +12,11 @@ router.post('/', jwt({ secret: process.env.SECRET }), (req, res) => {
         controller
             .postReserva(evento, usuario, cantidad)
             .then((evento) => res.status(200).json(evento))
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => {
+                console.log(err);
+
+                res.status(500).json(err);
+            });
     } else {
         res.status(400).json({ error: 'Hacen falta parametros' });
     }

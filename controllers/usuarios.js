@@ -34,3 +34,30 @@ module.exports.postUsuario = async (usuario, contraseña, nombre) => {
         }
     }
 };
+
+module.exports.getUsuario = async (usuario, contraseña) => {
+    try {
+        let userRecord = await postgresUtils.getUsuario(usuario);
+
+        let argon2Match = await argon2.verify(
+            userRecord.CONTRASEÑA,
+            contraseña
+        );
+
+        if (!argon2Match) {
+            throw 'Credenciales invalidas';
+        }
+        let token = generateToken(userRecord);
+        let usuarioSimple = {
+            ID: userRecord.ID,
+            USUARIO: userRecord.USUARIO,
+        };
+        return { token: token, usuario: usuarioSimple };
+    } catch (err) {
+        if (err.msg && err.detail) {
+            throw err;
+        } else {
+            throw { msg: 'Error en la autenticación', detail: err };
+        }
+    }
+};

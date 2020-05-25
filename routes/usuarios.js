@@ -21,4 +21,13 @@ router.post('/usuarios', (req, res) => {
         .catch((err) => res.status(500).json(err));
 });
 
+router.post('/login', (req, res) => {
+    let usuario = req.body.usuario;
+    let contraseña = req.body.contraseña;
+    controller
+        .getUsuario(usuario, contraseña)
+        .then((user) => res.status(200).json(user))
+        .catch((err) => res.status(500).json(err));
+});
+
 module.exports = router;

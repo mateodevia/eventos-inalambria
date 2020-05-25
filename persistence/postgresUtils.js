@@ -122,6 +122,23 @@ const PostgresUtils = () => {
         }
     };
 
+    exports.getUsuario = async (usuario) => {
+        try {
+            const res = await pool.query(
+                `SELECT *
+                FROM "USUARIOS"
+                WHERE "USUARIO" = '${usuario}'`
+            );
+
+            return res.rows[0];
+        } catch (err) {
+            throw {
+                msg: 'Error en el acceso a la base de datos',
+                detail: err,
+            };
+        }
+    };
+
     exports.postUsuario = async (usuario, nombre, contraseña, sal) => {
         try {
             const res = await pool.query(

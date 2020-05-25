@@ -11,7 +11,7 @@ router.get('/:id/reservas', (req, res) => {
         .catch((err) => res.status(500).json(err));
 });
 
-router.post('/usuarios', (req, res) => {
+router.post('/', (req, res) => {
     let usuario = req.body.usuario;
     let contraseña = req.body.contraseña;
     let nombre = req.body.nombre;

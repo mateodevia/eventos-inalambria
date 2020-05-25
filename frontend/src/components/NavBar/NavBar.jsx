@@ -16,7 +16,12 @@ function NavBar(props) {
     };
 
     let handleSession = () => {
-        props.history.push('/login');
+        if (window.sessionStorage.usuario) {
+            props.history.push('/login');
+            sessionStorage.clear();
+        } else {
+            props.history.push('/login');
+        }
     };
     return (
         <div className='navBarContainer flexbox'>
@@ -38,7 +43,9 @@ function NavBar(props) {
                 </h2>
             </div>
             <h3 className='session' onClick={handleSession}>
-                Iniciar Session
+                {window.sessionStorage.usuario
+                    ? 'Cerrar Sesión'
+                    : 'Iniciar Sesión'}
             </h3>
             {open && (
                 <div className='mobileContainer'>
@@ -58,7 +65,9 @@ function NavBar(props) {
                         </h2>
                     </div>
                     <h3 className='mobileSession' onClick={handleSession}>
-                        Iniciar Session
+                        {window.sessionStorage.usuario
+                            ? 'Cerrar Sesión'
+                            : 'Iniciar Sesión'}
                     </h3>
                 </div>
             )}

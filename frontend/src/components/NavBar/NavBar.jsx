@@ -11,8 +11,13 @@ function NavBar(props) {
     };
 
     let handleReservas = () => {
-        props.history.push('/reservas');
-        setOpen(!open);
+        if (window.sessionStorage.usuario) {
+            props.history.push('/reservas');
+            setOpen(!open);
+        } else {
+            props.history.push('/login');
+            setOpen(!open);
+        }
     };
 
     let handleSession = () => {

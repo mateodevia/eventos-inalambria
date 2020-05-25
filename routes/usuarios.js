@@ -21,7 +21,11 @@ router.post('/', (req, res) => {
     controller
         .postUsuario(usuario, contraseña, nombre)
         .then((user) => res.status(200).json(user))
-        .catch((err) => res.status(500).json(err));
+        .catch((err) => {
+            console.log(err);
+
+            res.status(500).json(err);
+        });
 });
 
 // Verifica las credenciales de un usuario y devuelve un token si son correctas

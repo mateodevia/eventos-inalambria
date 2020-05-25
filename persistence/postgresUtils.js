@@ -157,7 +157,7 @@ const PostgresUtils = () => {
         } catch (err) {
             throw {
                 msg: 'Error en el acceso a la base de datos',
-                detail: err.detail,
+                detail: err,
             };
         }
     };

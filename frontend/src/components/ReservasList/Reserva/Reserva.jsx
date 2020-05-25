@@ -9,7 +9,7 @@ function Reserva(props) {
 
     return (
         <div className='reservasCardContainer flexbox'>
-            <div className='imageContainer'>
+            <div className='imageContainer2'>
                 <img src={props.reserva.IMAGEN} alt='Imagen del Evento' />
             </div>
             <div className='infoContainer'>

@@ -10,13 +10,13 @@
     text-align: center;
 }
 
-.imageContainer {
+.imageContainer2 {
     height: 200px;
     width: 250px;
     overflow-x: hidden;
 }
 
-.imageContainer img {
+.imageContainer2 img {
     height: 100%;
 }
 
@@ -58,14 +58,14 @@
         text-align: center;
     }
 
-    .imageContainer {
+    .imageContainer2 {
         width: 250px;
         max-height: 150px;
         margin: 0 auto;
         overflow-y: hidden;
     }
 
-    .imageContainer img {
+    .imageContainer2 img {
         width: 100%;
     }
 

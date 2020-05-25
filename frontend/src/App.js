@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
+import Login from './components/Login/Login';
 
 function App() {
     return (
@@ -11,7 +12,7 @@ function App() {
                 <Route
                     path='/login'
                     render={() => {
-                        return <div>Login</div>;
+                        return <Login />;
                     }}
                 />
                 <Route

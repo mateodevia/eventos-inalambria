@@ -36,22 +36,17 @@ router.post('/', jwt({ secret: process.env.SECRET }), (req, res) => {
         precio &&
         imagen
     ) {
-        controller
-            .postEvento(
-                nombre,
-                organizador,
-                fecha,
-                cupos,
-                descripcion,
-                precio,
-                imagen
-            )
-            .then((evento) => res.status(200).json(evento))
-            .catch((err) => {
-                console.log(err);
-
-                res.status(500).json(err);
-            });
+        controller.postEvento(
+            nombre,
+            organizador,
+            fecha,
+            cupos,
+            descripcion,
+            precio,
+            imagen,
+            (evento) => res.status(200).json(evento),
+            (err) => res.status(500).json(err)
+        );
     } else {
         res.status(400).json({ error: 'Hacen falta parametros' });
     }

@@ -27,7 +27,9 @@ module.exports.postEvento = async (
     cupos,
     descripcion,
     precio,
-    imagen
+    imagen,
+    resolve,
+    reject
 ) => {
     try {
         let response = await postgresUtils.postEvento(
@@ -66,18 +68,17 @@ module.exports.postEvento = async (
                         precio,
                         myurl
                     );
+                    resolve(response);
                 } catch (err2) {
                     console.log('Error al enviar archivo a cloudinary: ', err2);
                 }
             }
         );
-
-        return response;
     } catch (err) {
         if (err.msg && err.detail) {
-            throw err;
+            reject(err);
         } else {
-            throw { msg: 'Error al crear un evento', detail: err };
+            reject({ msg: 'Error al crear un evento', detail: err });
         }
     }
 };

@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import ReservasList from './components/ReservasList/ReservasList';
 
 function App() {
     return (
@@ -34,7 +35,7 @@ function App() {
                         return (
                             <React.Fragment>
                                 <NavBar selected={'Reservas'} />
-                                <div>Mis Reservas</div>
+                                <ReservasList />
                             </React.Fragment>
                         );
                     }}

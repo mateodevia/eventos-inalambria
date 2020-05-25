@@ -1,0 +1,26 @@
+.reservasContainer {
+    width: 80vw;
+    margin: 0px 10vw;
+}
+
+.stickyReservasTitle {
+    z-index: 2;
+    position: sticky;
+    top: 60px;
+}
+
+.stickyReservasTitle h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: var(--secondary);
+    padding: 20px 0;
+    background-color: var(--background);
+}
+
+@media screen and (max-width: 650px) {
+    .reservasContainer {
+        width: calc(100% - 20px);
+        margin: 60px 10px;
+    }
+}

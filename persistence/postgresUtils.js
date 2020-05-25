@@ -84,7 +84,7 @@ const PostgresUtils = () => {
     exports.getReservasByUser = async (usuario) => {
         try {
             const res = await pool.query(
-                `SELECT "RESERVAS"."ID", "RESERVAS"."ID_EVENTO", "RESERVAS"."ID_USUARIO", "RESERVAS"."CANTIDAD", "EVENTOS"."NOMBRE"
+                `SELECT "RESERVAS"."ID", "RESERVAS"."ID_EVENTO", "RESERVAS"."ID_USUARIO", "RESERVAS"."CANTIDAD", "EVENTOS"."NOMBRE", "EVENTOS"."DESCRIPCION", "EVENTOS"."FECHA", "EVENTOS"."IMAGEN"
                 FROM "RESERVAS"
                 INNER JOIN "EVENTOS" ON "RESERVAS"."ID_EVENTO" = "EVENTOS"."ID"
                 WHERE "RESERVAS"."ID_USUARIO" = ${usuario}`

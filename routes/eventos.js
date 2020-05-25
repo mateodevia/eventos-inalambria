@@ -1,7 +1,9 @@
 const express = require('express');
+const jwt = require('express-jwt');
 const router = express.Router();
 const controller = require('../controllers/eventos');
 
+//Devuelve la lista de eventos disponibles en la plataforma
 router.get('/', (req, res) => {
     controller
         .getEventos()
@@ -9,7 +11,8 @@ router.get('/', (req, res) => {
         .catch((err) => res.status(500).json(err));
 });
 
-router.post('/', (req, res) => {
+//Crea un nuevo evento en la plataforma
+router.post('/', jwt({ secret: process.env.SECRET }), (req, res) => {
     let nombre = req.body.nombre;
     let organizador = req.body.organizador;
     let fecha = req.body.fecha;
@@ -26,7 +29,8 @@ router.post('/', (req, res) => {
     }
 });
 
-router.put('/', (req, res) => {
+// Actuzaliza el evento dado segun los parametros recibidos
+router.put('/', jwt({ secret: process.env.SECRET }), (req, res) => {
     let id = req.body.id;
     let nombre = req.body.nombre;
     let organizador = req.body.organizador;

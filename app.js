@@ -21,6 +21,15 @@ app.use('/api/eventos', eventosRouter);
 app.use('/api/reservas', reservasRouter);
 app.use('/api/usuarios', usuariosRouter);
 
+// Intercepta los errores de autenticación
+app.use((err, req, res, next) => {
+    if (err.name === 'UnauthorizedError') {
+        res.status(403).send({ message: 'Unauthorized' });
+        return;
+    }
+    next();
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));

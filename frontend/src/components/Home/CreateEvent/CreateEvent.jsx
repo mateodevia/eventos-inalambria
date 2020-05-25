@@ -13,7 +13,6 @@ const CreateEvent = (props) => {
     let nombreRef = useRef();
     let fileRef = useRef();
     let fechaRef = useRef();
-    let horaRef = useRef();
     let cuposRef = useRef();
     let precioRef = useRef();
     let descripcionRef = useRef();
@@ -27,20 +26,18 @@ const CreateEvent = (props) => {
             nombreRef.current.value === '' ||
             !fileRef.current.files[0] ||
             fechaRef.current.value === '' ||
-            horaRef.current.value === '' ||
             cuposRef.current.value === '' ||
+            parseInt(cuposRef.current.value) <= 0 ||
             precioRef.current.value === '' ||
+            parseInt(precioRef.current.value) < 0 ||
             descripcionRef.current.value === ''
         ) {
-            handleError('Algunos Campos estás incompletos');
+            handleError('Algunos Campos estás incompletos o son invalidos');
         } else {
             const fd = new FormData();
             fd.append('nombre', nombreRef.current.value);
             fd.append('organizador', window.sessionStorage.id);
-            fd.append(
-                'fecha',
-                fechaRef.current.value + ' ' + horaRef.current.value
-            );
+            fd.append('fecha', fechaRef.current.value);
             fd.append('cupos', cuposRef.current.value);
             fd.append('descripcion', descripcionRef.current.value);
             fd.append('precio', precioRef.current.value);
@@ -105,13 +102,6 @@ const CreateEvent = (props) => {
                         placeholder=''
                         type='date'
                         ref={fechaRef}
-                    />
-                    <input
-                        className='horaInput'
-                        placeholder=''
-                        type='time'
-                        accept='image/*'
-                        ref={horaRef}
                     />
                     <br />
                     <input

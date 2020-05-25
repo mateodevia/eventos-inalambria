@@ -17,6 +17,7 @@ function ReservasList(props) {
                 },
             })
             .then((response) => {
+                response.data.reverse();
                 setReservas(response.data);
                 setCargando(false);
             });
@@ -27,7 +28,7 @@ function ReservasList(props) {
             <div className='stickyReservasTitle'>
                 <h1>Mis Reservas</h1>
             </div>
-            <div className='reservasContainer flexbox'>
+            <div className='reservasContainer'>
                 {!cargando && reservas.length === 0 && (
                     <h1>Aún no tienes reservas</h1>
                 )}

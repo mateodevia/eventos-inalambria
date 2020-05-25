@@ -13,7 +13,6 @@ const EditEvent = (props) => {
     let nombreRef = useRef();
     let fileRef = useRef();
     let fechaRef = useRef();
-    let horaRef = useRef();
     let cuposRef = useRef();
     let precioRef = useRef();
     let descripcionRef = useRef();
@@ -22,7 +21,6 @@ const EditEvent = (props) => {
         if (
             nombreRef.current.value === '' ||
             fechaRef.current.value === '' ||
-            horaRef.current.value === '' ||
             cuposRef.current.value === '' ||
             precioRef.current.value === '' ||
             descripcionRef.current.value === ''
@@ -33,11 +31,7 @@ const EditEvent = (props) => {
                 id: props.event.ID,
                 nombre: nombreRef.current.value,
                 organizador: props.event.ORGANIZADOR,
-                fecha:
-                    fechaRef.current.value +
-                    'T' +
-                    horaRef.current.value +
-                    ':00.000Z',
+                fecha: fechaRef.current.value,
                 cupos: cuposRef.current.value,
                 descripcion: descripcionRef.current.value,
                 precio: precioRef.current.value,
@@ -81,12 +75,6 @@ const EditEvent = (props) => {
         return response;
     };
 
-    let formatTime = (longDate) => {
-        let response = longDate.substring(11, 16);
-
-        return response;
-    };
-
     if (props.show) {
         return (
             <div className='containerEditEvent'>
@@ -117,14 +105,6 @@ const EditEvent = (props) => {
                         type='date'
                         ref={fechaRef}
                         defaultValue={formatDate(props.event.FECHA)}
-                    />
-                    <input
-                        className='horaInput'
-                        placeholder=''
-                        type='time'
-                        accept='image/*'
-                        ref={horaRef}
-                        defaultValue={formatTime(props.event.FECHA)}
                     />
                     <br />
                     <input

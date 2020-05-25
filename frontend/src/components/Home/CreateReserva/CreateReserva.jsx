@@ -9,7 +9,11 @@ const CreateReserva = (props) => {
     let inputRef = useRef();
 
     let handleReservar = () => {
-        if (inputRef.current.value === '' || inputRef.current.value < 0) {
+        if (
+            inputRef.current.value === '' ||
+            inputRef.current.value < 0 ||
+            parseInt(inputRef.current.value) <= 0
+        ) {
             handleError('La cantidad de boletas no es valida');
         } else {
             fetch('/api/reservas', {
@@ -65,7 +69,7 @@ const CreateReserva = (props) => {
                     <br />
                     <br />
                     <h2>Descripción:</h2>
-                    <label>{props.event.DESCRIPCION}</label>
+                    <p>{props.event.DESCRIPCION}</p>
                     <br />
                     <h3>¿Cuantas boletas desea reservar?</h3>
                     <input type='number' maxLength='50' ref={inputRef} />

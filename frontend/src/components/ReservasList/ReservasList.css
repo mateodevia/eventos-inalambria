@@ -1,6 +1,9 @@
 .reservasContainer {
-    width: 80vw;
-    margin: 0px 10vw;
+    width: 100%;
+}
+
+.reservasContainer h1 {
+    margin: 0 auto;
 }
 
 .stickyReservasTitle {
@@ -20,7 +23,5 @@
 
 @media screen and (max-width: 650px) {
     .reservasContainer {
-        width: calc(100% - 20px);
-        margin: 60px 10px;
     }
 }

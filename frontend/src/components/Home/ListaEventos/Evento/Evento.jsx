@@ -4,8 +4,7 @@ import editIcon from '../../edit.svg';
 
 function EventosList(props) {
     let formatDate = (date) => {
-        let response = date.replace(':00.000Z', '');
-        response = response.replace('T', ' ');
+        let response = date.substring(0, 10);
         return response;
     };
 

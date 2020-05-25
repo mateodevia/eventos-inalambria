@@ -32,7 +32,7 @@ function Login(props) {
     let handleError = (msg) => {
         setErrorMessage(msg);
         setError(true);
-        setTimeout(() => setError(false), 5000);
+        setTimeout(() => setError(false), 4000);
     };
 
     let handleSend = () => {

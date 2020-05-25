@@ -11,6 +11,12 @@ function EventosList(props) {
         });
     }, []);
 
+    useEffect(() => {
+        axios.get('/api/eventos').then((response) => {
+            setEvents(response.data);
+        });
+    }, [props.refresh]);
+
     return (
         <div className='eventsContainer flexbox'>
             {events.map((event, i) => (

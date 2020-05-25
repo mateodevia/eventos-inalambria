@@ -1,7 +1,14 @@
 const express = require('express');
 const jwt = require('express-jwt');
+const fileUpload = require('express-fileupload');
 const router = express.Router();
 const controller = require('../controllers/eventos');
+
+router.use(
+    fileUpload({
+        useTempFiles: true,
+    })
+);
 
 //Devuelve la lista de eventos disponibles en la plataforma
 router.get('/', (req, res) => {
@@ -19,11 +26,32 @@ router.post('/', jwt({ secret: process.env.SECRET }), (req, res) => {
     let cupos = req.body.cupos;
     let descripcion = req.body.descripcion;
     let precio = req.body.precio;
-    if (nombre && organizador && fecha && cupos && descripcion && precio) {
+    let imagen = req.files.imagen;
+    if (
+        nombre &&
+        organizador &&
+        fecha &&
+        cupos &&
+        descripcion &&
+        precio &&
+        imagen
+    ) {
         controller
-            .postEvento(nombre, organizador, fecha, cupos, descripcion, precio)
+            .postEvento(
+                nombre,
+                organizador,
+                fecha,
+                cupos,
+                descripcion,
+                precio,
+                imagen
+            )
             .then((evento) => res.status(200).json(evento))
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => {
+                console.log(err);
+
+                res.status(500).json(err);
+            });
     } else {
         res.status(400).json({ error: 'Hacen falta parametros' });
     }

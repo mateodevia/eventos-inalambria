@@ -8,6 +8,7 @@ import CreateReserva from './CreateReserva/CreateReserva';
 function Home(props) {
     let [createEvent, setCreateEvent] = useState(false);
     let [createReserva, setCreateReserva] = useState(false);
+    let [refresh, setRefresh] = useState(false);
 
     let eventosRef = useRef();
 
@@ -27,7 +28,10 @@ function Home(props) {
             props.history.push('/login');
         }
     };
-    let handleCreateEventClose = () => {
+    let handleCreateEventClose = (newEvent) => {
+        if (newEvent) {
+            setRefresh(!refresh);
+        }
         document.body.style.overflow = '';
         setCreateEvent(false);
     };
@@ -75,7 +79,10 @@ function Home(props) {
                     </button>
                     <h1>Eventos</h1>
                 </div>
-                <EventosList handleCreateReserva={handleCreateReserva} />
+                <EventosList
+                    handleCreateReserva={handleCreateReserva}
+                    refresh={refresh}
+                />
             </div>
         </React.Fragment>
     );

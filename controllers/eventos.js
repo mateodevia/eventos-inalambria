@@ -1,5 +1,12 @@
 const PostgresUtils = require('../persistence/postgresUtils');
 const postgresUtils = PostgresUtils();
+const cloudinary = require('cloudinary');
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET,
+});
 
 module.exports.getEventos = async () => {
     try {
@@ -19,7 +26,8 @@ module.exports.postEvento = async (
     fecha,
     cupos,
     descripcion,
-    precio
+    precio,
+    imagen
 ) => {
     try {
         let response = await postgresUtils.postEvento(
@@ -36,6 +44,34 @@ module.exports.postEvento = async (
         response.CUPOS = cupos;
         response.DESCRIPCION = descripcion;
         response.PRECIO = precio;
+
+        cloudinary.v2.uploader.upload(
+            imagen.tempFilePath,
+            {
+                folder: '/chatcenter',
+            },
+            async (err, res2) => {
+                if (err) {
+                    console.log(err);
+                }
+                try {
+                    let myurl = res2.url.replace('http', 'https');
+                    await postgresUtils.updateEvento(
+                        response.ID,
+                        nombre,
+                        organizador,
+                        fecha,
+                        cupos,
+                        descripcion,
+                        precio,
+                        myurl
+                    );
+                } catch (err2) {
+                    console.log('Error al enviar archivo a cloudinary: ', err2);
+                }
+            }
+        );
+
         return response;
     } catch (err) {
         if (err.msg && err.detail) {

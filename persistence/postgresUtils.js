@@ -14,7 +14,7 @@ const PostgresUtils = () => {
     exports.getEventos = async () => {
         try {
             const res = await pool.query(
-                `SELECT "EVENTOS"."ID", "EVENTOS"."NOMBRE", "EVENTOS"."ORGANIZADOR", "EVENTOS"."FECHA", "EVENTOS"."CUPOS", "EVENTOS"."DESCRIPCION", "EVENTOS"."PRECIO", "USUARIOS"."USUARIO"
+                `SELECT "EVENTOS"."ID", "EVENTOS"."NOMBRE", "EVENTOS"."ORGANIZADOR", "EVENTOS"."FECHA", "EVENTOS"."CUPOS", "EVENTOS"."DESCRIPCION", "EVENTOS"."PRECIO", "USUARIOS"."USUARIO", "EVENTOS"."IMAGEN"
                 FROM "EVENTOS"
                 INNER JOIN "USUARIOS" ON "EVENTOS"."ORGANIZADOR" = "USUARIOS"."ID"`
             );
@@ -35,16 +35,17 @@ const PostgresUtils = () => {
         fecha,
         cupos,
         descripcion,
-        precio
+        precio,
+        imagen
     ) => {
         try {
             console.log(`UPDATE "EVENTOS"
-            SET "NOMBRE"='${nombre}', "ORGANIZADOR"=${organizador}, "FECHA"='${fecha}', "CUPOS"=${cupos}, "DESCRIPCION"='${descripcion}', "PRECIO"=${precio}
+            SET "NOMBRE"='${nombre}', "ORGANIZADOR"=${organizador}, "FECHA"='${fecha}', "CUPOS"=${cupos}, "DESCRIPCION"='${descripcion}', "PRECIO"=${precio}, "IMAGEN"='${imagen}'
             WHERE "ID"=${id};`);
 
             const res = await pool.query(
                 `UPDATE "EVENTOS"
-                SET "NOMBRE"='${nombre}', "ORGANIZADOR"=${organizador}, "FECHA"='${fecha}', "CUPOS"=${cupos}, "DESCRIPCION"='${descripcion}', "PRECIO"=${precio}
+                SET "NOMBRE"='${nombre}', "ORGANIZADOR"=${organizador}, "FECHA"='${fecha}', "CUPOS"=${cupos}, "DESCRIPCION"='${descripcion}', "PRECIO"=${precio}, "IMAGEN"='${imagen}'
                 WHERE "ID"=${id};`
             );
             return res.rows[0];

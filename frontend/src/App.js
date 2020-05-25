@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
+import Home from './components/Home/Home';
 
 function App() {
     return (
@@ -20,7 +21,7 @@ function App() {
                         return (
                             <React.Fragment>
                                 <NavBar selected={'Home'} />
-                                <div>Home</div>
+                                <Home />
                             </React.Fragment>
                         );
                     }}

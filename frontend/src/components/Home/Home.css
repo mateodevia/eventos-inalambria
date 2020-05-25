@@ -1,0 +1,103 @@
+.mainSection {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: var(--primary);
+}
+
+.welcomeContainer {
+    width: 60vw;
+    padding: 25vh 0 0 60px;
+    position: absolute;
+}
+
+.welcomeContainer h1 {
+    margin: 0;
+    color: white;
+}
+
+.welcomeContainer p {
+    color: white;
+    font-size: 20px;
+}
+
+.welcomeContainer button {
+    border: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    height: fit-content;
+    min-height: 36px;
+    border-radius: 18px;
+    color: white;
+    cursor: pointer;
+    background-color: var(--contrast);
+}
+
+.welcomeContainer button:hover {
+    transform: scale(1.05);
+    transition: all 0.4s;
+}
+
+.triangle {
+    position: absolute;
+    right: 0;
+    padding-top: 35vh;
+    margin-left: 35vw;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 calc(65vh - 60px) calc(65vw);
+    border-color: transparent transparent var(--secondary) transparent;
+}
+
+.svgTriangle {
+    height: 100%;
+    width: 100%;
+}
+
+.stickyTitle {
+    position: sticky;
+    top: 60px;
+}
+
+.eventsSection h1 {
+    margin: 0px;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    color: var(--secondary);
+    background-color: var(--background);
+}
+
+.addEventButton {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    border: none;
+    padding: 10px;
+    margin: 20px;
+    height: 36px;
+    border-radius: 18px;
+    color: white;
+    background-color: var(--primary);
+}
+
+.addEventButton:hover {
+    transform: scale(1.05);
+    transition: all 0.4s;
+}
+
+@media screen and (max-width: 450px) {
+    .eventsSection h1 {
+        text-align: left;
+    }
+
+    .welcomeContainer {
+        width: 60vw;
+        padding: 10vh 0 0 60px;
+        position: absolute;
+    }
+
+    .welcomeContainer button {
+        margin-top: 40px;
+    }
+}

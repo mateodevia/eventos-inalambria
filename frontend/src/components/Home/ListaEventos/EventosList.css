@@ -1,0 +1,5 @@
+.eventsContainer {
+    margin-top: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+}

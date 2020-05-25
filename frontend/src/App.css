@@ -1,7 +1,7 @@
 body {
-    --primary: rgb(47, 200, 232);
+    --primary: rgb(11, 183, 218);
     --secondary: rgb(58, 74, 77);
-    --background: rgb(247, 248, 250);
+    --background: rgb(245, 245, 245);
     --contrast: rgb(254, 67, 50);
     background-color: var(--background);
 }

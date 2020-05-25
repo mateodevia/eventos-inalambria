@@ -19,7 +19,9 @@ function EventosList(props) {
                 <h3>${props.event.PRECIO}</h3>
                 <h3>Organizado por:</h3>
                 <h4>{props.event.USUARIO}</h4>
-                <button onClick={props.handleCreateReserva}>RESERVAR</button>
+                <button onClick={() => props.handleCreateReserva(props.event)}>
+                    RESERVAR
+                </button>
             </div>
         </React.Fragment>
     );

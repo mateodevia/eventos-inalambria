@@ -9,6 +9,7 @@ function Home(props) {
     let [createEvent, setCreateEvent] = useState(false);
     let [createReserva, setCreateReserva] = useState(false);
     let [refresh, setRefresh] = useState(false);
+    let [currentEvent, setCurrentEvent] = useState(undefined);
 
     let eventosRef = useRef();
 
@@ -36,9 +37,10 @@ function Home(props) {
         setCreateEvent(false);
     };
 
-    let handleCreateReserva = () => {
+    let handleCreateReserva = (eventoId) => {
         if (window.sessionStorage.usuario) {
             document.body.style.overflow = 'hidden';
+            setCurrentEvent(eventoId);
             setCreateReserva(true);
         } else {
             props.history.push('/login');
@@ -56,6 +58,7 @@ function Home(props) {
             <CreateReserva
                 show={createReserva}
                 close={handleCreateReservaClose}
+                event={currentEvent}
             />
             <div className='mainSection'>
                 <div className='triangle'></div>

@@ -132,12 +132,11 @@ const CreateEvent = (props) => {
                         className='descripcionTextArea'
                         placeholder='Descripción'
                         rows='5'
-                        cols='50'
                         ref={descripcionRef}
                         maxLength='1000'
                     />
                     <br />
-                    <button onClick={handleSumbit}>Agregar</button>
+                    <button onClick={handleSumbit}>AGREGAR</button>
                 </div>
             </div>
         );

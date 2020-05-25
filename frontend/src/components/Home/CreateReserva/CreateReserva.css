@@ -14,4 +14,43 @@
 .cardCreateReserva {
     background-color: white;
     background: white;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+.cardCreateReserva h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.cardCreateReserva h2 {
+    font-size: 16px;
+    width: fit-content;
+    margin: 0;
+}
+
+.cardCreateReserva h3 {
+    font-size: 16px;
+    display: inline;
+}
+
+.cardCreateReserva input {
+    font-size: 16px;
+    padding: 5px;
+    width: 120px;
+    margin: 10px;
+}
+
+.cardCreateReserva button {
+    border: none;
+    margin: 10px 0;
+    padding: 10px 20px;
+    height: fit-content;
+    width: 100%;
+    min-width: 200px;
+    min-height: 36px;
+    border-radius: 18px;
+    color: white;
+    cursor: pointer;
+    background-color: var(--contrast);
 }

@@ -15,6 +15,7 @@
     background-color: white;
     background: white;
     padding: 10px;
+    margin: 10px;
 }
 
 .closeButton {
@@ -90,6 +91,8 @@
 .descripcionTextArea {
     padding: 5px;
     margin: 10px;
+    width: calc(100% - 30px);
+    max-width: calc(100% - 30px);
 }
 
 .cardCreateEvent button {
@@ -104,4 +107,33 @@
     color: white;
     cursor: pointer;
     background-color: var(--contrast);
+}
+
+@media screen and (max-width: 450px) {
+    .cardCreateEvent {
+        max-width: calc(100% - 35px);
+    }
+
+    .nombreInput {
+        width: calc(100% - 35px);
+        min-width: 0px;
+        padding: 5px;
+    }
+
+    .cardCreateEvent button {
+        height: fit-content;
+        width: calc(100% - 25px);
+        min-width: 0px;
+        min-height: 36px;
+    }
+
+    .cuposInput {
+        padding: 5px;
+        width: 55px;
+    }
+
+    .precioInput {
+        padding: 5px;
+        width: 55px;
+    }
 }

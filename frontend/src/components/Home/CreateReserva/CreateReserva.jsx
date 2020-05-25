@@ -60,8 +60,12 @@ const CreateReserva = (props) => {
                     {error && (
                         <div className='errorMessage'>{errorMessage}</div>
                     )}
-                    <h2>Evento</h2>
+                    <h2>Evento:</h2>
                     <label>{props.event.NOMBRE}</label>
+                    <br />
+                    <br />
+                    <h2>Descripción:</h2>
+                    <label>{props.event.DESCRIPCION}</label>
                     <br />
                     <h3>¿Cuantas boletas desea reservar?</h3>
                     <input type='number' maxLength='50' ref={inputRef} />

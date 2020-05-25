@@ -61,7 +61,16 @@ router.put('/', jwt({ secret: process.env.SECRET }), (req, res) => {
     let cupos = req.body.cupos;
     let descripcion = req.body.descripcion;
     let precio = req.body.precio;
-    if (nombre && organizador && fecha && cupos && descripcion && precio) {
+    let imagen = req.body.imagen;
+    if (
+        nombre &&
+        organizador &&
+        fecha &&
+        cupos &&
+        descripcion &&
+        precio &&
+        imagen
+    ) {
         controller
             .updateEvento(
                 id,
@@ -70,7 +79,8 @@ router.put('/', jwt({ secret: process.env.SECRET }), (req, res) => {
                 fecha,
                 cupos,
                 descripcion,
-                precio
+                precio,
+                imagen
             )
             .then((evento) => res.status(200).json(evento))
             .catch((err) => res.status(500).json(err));

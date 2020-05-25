@@ -41,7 +41,7 @@ const PostgresUtils = () => {
         try {
             console.log(`UPDATE "EVENTOS"
             SET "NOMBRE"='${nombre}', "ORGANIZADOR"=${organizador}, "FECHA"='${fecha}', "CUPOS"=${cupos}, "DESCRIPCION"='${descripcion}', "PRECIO"=${precio}, "IMAGEN"='${imagen}'
-            WHERE "ID"=${id};`);
+            WHERE "ID"=${id}`);
 
             const res = await pool.query(
                 `UPDATE "EVENTOS"

@@ -52,3 +52,19 @@
     transform: scale(1.05);
     transition: all 0.4s;
 }
+
+.editButton {
+    position: absolute;
+    margin-left: 260px;
+    height: 40px;
+    width: 40px;
+    background-color: var(--secondary);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.editButton img {
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+}

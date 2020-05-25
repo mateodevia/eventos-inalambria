@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Evento.css';
+import editIcon from '../../edit.svg';
 
 function EventosList(props) {
     let formatDate = (date) => {
@@ -11,6 +12,14 @@ function EventosList(props) {
     return (
         <React.Fragment>
             <div className='cardContainer'>
+                {props.event.USUARIO === window.sessionStorage.usuario && (
+                    <div
+                        className='editButton'
+                        onClick={() => props.handleEditEvent(props.event)}
+                    >
+                        <img src={editIcon} alt='editIcon' />
+                    </div>
+                )}
                 <div className='imageContainer'>
                     <img src={props.event.IMAGEN} alt='' />
                 </div>

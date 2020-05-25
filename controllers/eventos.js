@@ -90,7 +90,8 @@ module.exports.updateEvento = async (
     fecha,
     cupos,
     descripcion,
-    precio
+    precio,
+    imagen
 ) => {
     try {
         await postgresUtils.updateEvento(
@@ -100,7 +101,8 @@ module.exports.updateEvento = async (
             fecha,
             cupos,
             descripcion,
-            precio
+            precio,
+            imagen
         );
         let response = {};
         response.NOMBRE = nombre;

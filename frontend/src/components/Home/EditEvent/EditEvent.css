@@ -1,0 +1,139 @@
+.containerEditEvent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.cardEditEvent {
+    background-color: white;
+    background: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+.closeButton {
+    float: right;
+    cursor: pointer;
+}
+
+.closeButton img {
+    height: 15px;
+}
+
+.cardEditEvent h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.cardEditEvent input {
+    margin: 10px;
+}
+
+.nombreInput {
+    width: calc(100% - 35px);
+    min-width: 380px;
+    padding: 5px;
+}
+
+[type='file'] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px;
+}
+
+[type='file'] + label {
+    font-size: 14px;
+    background-color: var(--primary);
+    padding: 5px 10px;
+    margin: 0px 10px;
+    border-radius: 4rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 2rem 4rem;
+}
+
+.fileName {
+    font-size: 14px;
+}
+
+.dateLabel {
+    margin-left: 10px;
+}
+
+[type='file'] + label:hover {
+    transform: scale(1.05);
+    transition: all 0.4s;
+}
+
+.cuposInput {
+    padding: 5px;
+    width: 120px;
+}
+
+.precioInput {
+    padding: 5px;
+    width: 120px;
+}
+
+.descripcionTextArea {
+    padding: 5px;
+    margin: 10px;
+    width: calc(100% - 30px);
+    max-width: calc(100% - 30px);
+}
+
+.cardEditEvent button {
+    border: none;
+    margin: 10px;
+    padding: 10px 20px;
+    height: fit-content;
+    width: calc(100% - 25px);
+    min-width: 380px;
+    min-height: 36px;
+    border-radius: 18px;
+    color: white;
+    cursor: pointer;
+    background-color: var(--contrast);
+}
+
+@media screen and (max-width: 450px) {
+    .cardEditEvent {
+        max-width: calc(100% - 35px);
+    }
+
+    .nombreInput {
+        width: calc(100% - 35px);
+        min-width: 0px;
+        padding: 5px;
+    }
+
+    .cardEditEvent button {
+        height: fit-content;
+        width: calc(100% - 25px);
+        min-width: 0px;
+        min-height: 36px;
+    }
+
+    .cuposInput {
+        padding: 5px;
+        width: 55px;
+    }
+
+    .precioInput {
+        padding: 5px;
+        width: 55px;
+    }
+}

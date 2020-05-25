@@ -55,6 +55,7 @@
 }
 
 .stickyTitle {
+    z-index: 2;
     position: sticky;
     top: 60px;
 }

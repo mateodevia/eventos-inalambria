@@ -4,9 +4,11 @@ import { withRouter } from 'react-router-dom';
 import EventosList from './ListaEventos/EventosList';
 import CreateEvent from './CreateEvent/CreateEvent';
 import CreateReserva from './CreateReserva/CreateReserva';
+import EditEvent from './EditEvent/EditEvent';
 
 function Home(props) {
     let [createEvent, setCreateEvent] = useState(false);
+    let [editEvent, setEditEvent] = useState(false);
     let [createReserva, setCreateReserva] = useState(false);
     let [refresh, setRefresh] = useState(false);
     let [currentEvent, setCurrentEvent] = useState(undefined);
@@ -37,6 +39,23 @@ function Home(props) {
         setCreateEvent(false);
     };
 
+    let handleEditEvent = (eventoId) => {
+        setCurrentEvent(eventoId);
+        if (window.sessionStorage.usuario) {
+            document.body.style.overflow = 'hidden';
+            setEditEvent(true);
+        } else {
+            props.history.push('/login');
+        }
+    };
+    let handleEditEventClose = (newEvent) => {
+        if (newEvent) {
+            setRefresh(!refresh);
+        }
+        document.body.style.overflow = '';
+        setEditEvent(false);
+    };
+
     let handleCreateReserva = (eventoId) => {
         if (window.sessionStorage.usuario) {
             document.body.style.overflow = 'hidden';
@@ -46,7 +65,6 @@ function Home(props) {
             props.history.push('/login');
         }
     };
-
     let handleCreateReservaClose = (newReserva) => {
         document.body.style.overflow = '';
         setCreateReserva(false);
@@ -61,6 +79,11 @@ function Home(props) {
             <CreateReserva
                 show={createReserva}
                 close={handleCreateReservaClose}
+                event={currentEvent}
+            />
+            <EditEvent
+                show={editEvent}
+                close={handleEditEventClose}
                 event={currentEvent}
             />
             <div className='mainSection'>
@@ -87,6 +110,7 @@ function Home(props) {
                 </div>
                 <EventosList
                     handleCreateReserva={handleCreateReserva}
+                    handleEditEvent={handleEditEvent}
                     refresh={refresh}
                 />
             </div>

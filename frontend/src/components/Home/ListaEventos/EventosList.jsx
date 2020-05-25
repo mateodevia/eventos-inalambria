@@ -24,6 +24,7 @@ function EventosList(props) {
                     key={i}
                     event={event}
                     handleCreateReserva={props.handleCreateReserva}
+                    handleEditEvent={props.handleEditEvent}
                 />
             ))}
         </div>

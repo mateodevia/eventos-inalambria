@@ -2,8 +2,13 @@ import React, { useState, useRef } from 'react';
 import '../Home/Home.css';
 import { withRouter } from 'react-router-dom';
 import EventosList from './ListaEventos/EventosList';
+import CreateEvent from './CreateEvent/CreateEvent';
+import CreateReserva from './CreateReserva/CreateReserva';
 
 function Home(props) {
+    let [createEvent, setCreateEvent] = useState(false);
+    let [createReserva, setCreateReserva] = useState(false);
+
     let eventosRef = useRef();
 
     let handleExplorar = () => {
@@ -14,8 +19,40 @@ function Home(props) {
         });
     };
 
+    let handleCreateEvent = () => {
+        if (window.sessionStorage.usuario) {
+            document.body.style.overflow = 'hidden';
+            setCreateEvent(true);
+        } else {
+            props.history.push('/login');
+        }
+    };
+    let handleCreateEventClose = () => {
+        document.body.style.overflow = '';
+        setCreateEvent(false);
+    };
+
+    let handleCreateReserva = () => {
+        if (window.sessionStorage.usuario) {
+            document.body.style.overflow = 'hidden';
+            setCreateReserva(true);
+        } else {
+            props.history.push('/login');
+        }
+    };
+
+    let handleCreateReservaClose = () => {
+        document.body.style.overflow = '';
+        setCreateReserva(false);
+    };
+
     return (
         <React.Fragment>
+            <CreateEvent show={createEvent} close={handleCreateEventClose} />
+            <CreateReserva
+                show={createReserva}
+                close={handleCreateReservaClose}
+            />
             <div className='mainSection'>
                 <div className='triangle'></div>
                 <div className='welcomeContainer'>
@@ -30,10 +67,15 @@ function Home(props) {
             </div>
             <div className='eventsSection' ref={eventosRef}>
                 <div className='stickyTitle'>
-                    <button className='addEventButton'>Agregar Evento</button>
+                    <button
+                        className='addEventButton'
+                        onClick={handleCreateEvent}
+                    >
+                        Agregar Evento
+                    </button>
                     <h1>Eventos</h1>
                 </div>
-                <EventosList />
+                <EventosList handleCreateReserva={handleCreateReserva} />
             </div>
         </React.Fragment>
     );

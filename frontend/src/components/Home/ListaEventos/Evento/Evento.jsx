@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Evento.css';
-import { withRouter } from 'react-router-dom';
 
 function EventosList(props) {
     return (
@@ -17,10 +16,10 @@ function EventosList(props) {
                 <h3>${props.event.PRECIO}</h3>
                 <h3>Organizado por:</h3>
                 <h4>{props.event.USUARIO}</h4>
-                <button>RESERVAR</button>
+                <button onClick={props.handleCreateReserva}>RESERVAR</button>
             </div>
         </React.Fragment>
     );
 }
 
-export default withRouter(EventosList);
+export default EventosList;

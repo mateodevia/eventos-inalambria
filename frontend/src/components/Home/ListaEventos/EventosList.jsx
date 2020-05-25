@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import Evento from './Evento/Evento';
 import '../ListaEventos/EventosList.css';
 import axios from 'axios';
@@ -15,10 +14,14 @@ function EventosList(props) {
     return (
         <div className='eventsContainer flexbox'>
             {events.map((event, i) => (
-                <Evento key={i} event={event} />
+                <Evento
+                    key={i}
+                    event={event}
+                    handleCreateReserva={props.handleCreateReserva}
+                />
             ))}
         </div>
     );
 }
 
-export default withRouter(EventosList);
+export default EventosList;

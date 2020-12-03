@@ -28,4 +28,4 @@ blocks:
       jobs:
         - name: Using sem-version
           commands:
-            - node -p '"evol".split("").reverse().join("")'
+            - npm install

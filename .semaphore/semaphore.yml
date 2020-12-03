@@ -6,7 +6,7 @@ agent:
     os_image: ubuntu1804
   containers:
     - name: main
-      image: 'registry.semaphoreci.com/ruby:2.6'
+      image: 'registry.semaphoreci.com/node:12'
     - name: db
       image: 'registry.semaphoreci.com/postgres:9.6'
       env_vars:

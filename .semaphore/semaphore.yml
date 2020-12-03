@@ -23,4 +23,3 @@ blocks:
             - apt-get -y update && apt-get install postgresql-client redis-tools
             - PGPASSWORD="postgres" createdb -U postgres -h db -p 5432
             - redis-cli -h cache "KEYS *"
-            - pPGPASSWORD="postgres" psql -U postgres -h db -p 5432 -l

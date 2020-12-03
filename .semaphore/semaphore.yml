@@ -2,7 +2,7 @@ version: v1.0
 name: Inictialize Docker Containers
 agent:
   machine:
-    type: 'e1-standard-2https://prueba.semaphoreci.com/projects/eventos-inalambria/workflow_builder?templatePath=templates/docker-build.yml&templateTitle=Build%20Docker#'
+    type: e1-standard-2
     os_image: ubuntu1804
   containers:
     - name: main

@@ -23,9 +23,10 @@ blocks:
             - apt-get -y update && apt-get install postgresql-client redis-tools
             - PGPASSWORD="keyboard-cat" createdb -U postgres -h db -p 5432
             - redis-cli -h cache "KEYS *"
-  - name: Initialize server
+  - name: sem-version
     task:
       jobs:
-        - name: 'Job #1'
+        - name: Using sem-version
           commands:
-            - npm install
+            - sem-version node 12.18.1
+            - go version

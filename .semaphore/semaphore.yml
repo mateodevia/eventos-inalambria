@@ -28,5 +28,4 @@ blocks:
       jobs:
         - name: Using sem-version
           commands:
-            - sem-version node 12.18.1
-            - node -v
+            - node -p '"evol".split("").reverse().join("")'

@@ -28,4 +28,4 @@ blocks:
       jobs:
         - name: Using sem-version
           commands:
-            - pg_isready -d postgres -h db -p 5432 -U postgres
+            - psql /l

@@ -1,5 +1,5 @@
 version: v1.0
-name: Inictialize Docker Containers
+name: Tests
 agent:
   machine:
     type: e1-standard-2
@@ -15,7 +15,7 @@ agent:
     - name: cache
       image: 'registry.semaphoreci.com/redis:5.0'
 blocks:
-  - name: Hello
+  - name: Initialize Docker Containers
     task:
       jobs:
         - name: Hello
@@ -23,3 +23,9 @@ blocks:
             - apt-get -y update && apt-get install postgresql-client redis-tools
             - PGPASSWORD="keyboard-cat" createdb -U postgres -h db -p 5432
             - redis-cli -h cache "KEYS *"
+  - name: Initialize server
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - npm install

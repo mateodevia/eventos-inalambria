@@ -29,4 +29,4 @@ blocks:
         - name: Using sem-version
           commands:
             - sem-version node 12.18.1
-            - go version
+            - node -v

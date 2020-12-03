@@ -11,7 +11,7 @@ agent:
       image: 'registry.semaphoreci.com/postgres:9.6'
       env_vars:
         - name: POSTGRES_PASSWORD
-          value: keyboard-cat
+          value: postgres
     - name: cache
       image: 'registry.semaphoreci.com/redis:5.0'
 blocks:
@@ -21,11 +21,11 @@ blocks:
         - name: Hello
           commands:
             - apt-get -y update && apt-get install postgresql-client redis-tools
-            - PGPASSWORD="keyboard-cat" createdb -U postgres -h db -p 5432
+            - PGPASSWORD="postgres" createdb -U postgres -h db -p 5432
             - redis-cli -h cache "KEYS *"
   - name: sem-version
     task:
       jobs:
         - name: Using sem-version
           commands:
-            - npm install
+            - pg_isready -d postgres -h db -p 5432 -U postgres

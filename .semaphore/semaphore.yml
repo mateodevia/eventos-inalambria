@@ -12,14 +12,16 @@ agent:
       env_vars:
         - name: POSTGRES_PASSWORD
           value: postgres
+        - name: DB_NAME
+          value: nplat_test
     - name: cache
       image: 'registry.semaphoreci.com/redis:5.0'
 blocks:
   - name: Initialize Docker Containers
     task:
       jobs:
-        - name: Hello
+        - name: Initialize environment
           commands:
             - apt-get -y update && apt-get install postgresql-client redis-tools
-            - PGPASSWORD="postgres" createdb -U postgres -h db -p 5432
+            - PGPASSWORD="postgres" createdb -U postgres -h db -p 5432 $DB_NAME
             - redis-cli -h cache "KEYS *"

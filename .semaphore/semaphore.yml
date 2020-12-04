@@ -25,3 +25,6 @@ blocks:
             - apt-get -y update && apt-get install postgresql-client redis-tools
             - PGPASSWORD="postgres" createdb -U postgres -h db -p 5432 $DB_NAME
             - redis-cli -h cache "KEYS *"
+      env_vars:
+        - name: DB_HOSTNAME
+          value: db

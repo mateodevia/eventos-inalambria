@@ -36,3 +36,19 @@ blocks:
       env_vars:
         - name: DB_HOSTNAME
           value: db
+  - name: Test run
+    task:
+      prologue:
+        commands:
+          - apt-get -y update && apt-get install postgresql-client redis-tools
+          - PGPASSWORD="postgres" createdb -U postgres -h db -p 5432 $DB_NAME
+          - redis-cli -h cache "KEYS *"
+      jobs:
+        - name: npm install + npm start
+          commands:
+            - apt-get -y update && apt-get install postgresql-client redis-tools
+            - PGPASSWORD="postgres" createdb -U postgres -h db -p 5432 $DB_NAME
+            - redis-cli -h cache "KEYS *"
+      env_vars:
+        - name: DB_HOSTNAME
+          value: db
